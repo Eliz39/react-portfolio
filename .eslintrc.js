@@ -18,6 +18,12 @@ module.exports = {
   },
   rules: {
     semi: 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     // '@typescript-eslint/semi': ['error', 'never'],
     // '@typescript-eslint/no-use-before-define': [
     //   'error',
