@@ -1,13 +1,16 @@
 import './App.css'
-import React from 'react'
+import { ThemeProvider } from 'styled-components'
+import { defaultTheme } from './theme'
 import TimelineList from './TimelineList'
 
 function App() {
   return (
-    <div className='timeline-content'>
-      <h1 className='timeline-content__title'>JavaScript history</h1>
-      <TimelineList />
-    </div>
+    <ThemeProvider theme={defaultTheme}>
+      <div className='timeline-content'>
+        <h1 className='timeline-content__title'>JavaScript history</h1>
+        <TimelineList />
+      </div>
+    </ThemeProvider>
   )
 }
 

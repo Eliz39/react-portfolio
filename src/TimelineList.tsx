@@ -57,26 +57,26 @@ export default TimelineList
 const List = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 50px;
-  border-left: 4px solid #004ffc;
-  border-bottom-right-radius: 4px;
-  border-top-right-radius: 4px;
+  gap: ${props => props.theme.spacing};
+  border-left: 4px solid ${props => props.theme.palette.primary.main};
+  border-bottom-right-radius: ${props => props.theme.borderRadius};
+  border-top-right-radius: ${props => props.theme.borderRadius};
   background: rgba(255, 255, 255, 0.03);
   color: rgb(245, 228, 228);
   font-family: 'Chivo', sans-serif;
-  margin: 50px auto;
+  margin: ${props => props.theme.spacing} auto;
   letter-spacing: 0.5px;
   position: relative;
   line-height: 1.4em;
   font-size: 1.03em;
-  padding: 50px;
+  padding: ${props => props.theme.spacing};
   list-style: none;
   text-align: left;
   font-weight: 100;
   max-width: 50%;
 `
 const EventItem = styled.li<EventItemProps>`
-  border-bottom: 1px dashed #6c6d6d;
+  border-bottom: 1px dashed ${props => props.theme.palette.secondary.main};
   position: relative;
 
   &:last-of-type {
@@ -94,25 +94,25 @@ const EventItem = styled.li<EventItemProps>`
   }
 
   &::before {
-    left: calc(((120px * 0.6 + 50px + 4px + 11px + 4px * 2) * 1.5) * -1);
-    color: #6c6d6d;
+    left: calc(((${props => props.theme.date} * 0.6 + 50px + 4px + 11px + 4px * 2) * 1.5) * -1);
+    color: ${props => props.theme.palette.secondary.main};
     content: ${props => props.date};
     text-align: right;
     font-weight: 100;
     font-size: 0.9em;
-    min-width: 120px;
+    min-width: ${props => props.date};
     font-family: 'Saira', sans-serif;
   }
 
   &::after {
     box-shadow: 0 0 0 4px #004ffc;
-    left: calc((50px + 4px + 11px * 0.35) * -1);
+    left: calc((${props => props.theme.spacing} + 4px + 11px * 0.35) * -1);
     border-radius: 50%;
-    height: 11px;
-    width: 11px;
+    height: ${props => props.theme.dot};
+    width: ${props => props.theme.dot};
     content: '';
     top: 5px;
-    background: #252827;
+    background: ${props => props.theme.palette.common.bg};
   }
 `
 
@@ -121,5 +121,5 @@ const EventTitle = styled.h3`
   margin: 0;
 `
 const Line = styled.p`
-  margin-top: 50px;
+  margin-top: ${props => props.theme.spacing};
 `
