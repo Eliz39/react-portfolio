@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-export function Buttons() {
+export const Buttons = () => {
   const [value, setValue] = useState(0)
   return (
     <Div_Wrapper>
