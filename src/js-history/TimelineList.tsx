@@ -4,7 +4,7 @@ type EventItemProps = {
   date: string
 }
 
-function TimelineList() {
+export const TimelineList = () => {
   return (
     <List>
       <EventItem date='1995'>
@@ -51,8 +51,6 @@ function TimelineList() {
     </List>
   )
 }
-
-export default TimelineList
 
 const List = styled.ul`
   display: flex;
