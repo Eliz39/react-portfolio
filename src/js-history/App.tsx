@@ -3,14 +3,14 @@ import { Buttons } from '../buttons/Buttons'
 import { Link, Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { TimelineList } from './TimelineList'
-import { btns, jsHistory } from '../urls'
+import { URLS } from '../urls'
 import { defaultTheme } from './theme'
 
 function App() {
   return (
     <Routes>
       <Route
-        path={jsHistory}
+        path={URLS.jsHistory}
         element={
           <ThemeProvider theme={defaultTheme}>
             <div className='timeline-content'>
@@ -20,7 +20,7 @@ function App() {
           </ThemeProvider>
         }
       />
-      <Route path={btns} element={<Buttons />} />
+      <Route path={URLS.btns} element={<Buttons />} />
     </Routes>
   )
 }

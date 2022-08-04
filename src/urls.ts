@@ -1,4 +1,6 @@
-const jsHistory = '/'
-const btns = 'buttons'
+const URLS = {
+  jsHistory: '/',
+  btns: 'buttons',
+}
 
-export { jsHistory, btns }
+export { URLS }
