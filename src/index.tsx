@@ -1,5 +1,5 @@
 import { BrowserRouter } from 'react-router-dom'
-import App from './js-history/App'
+import App from './components/App'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 

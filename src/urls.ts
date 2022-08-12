@@ -1,6 +1,7 @@
 const URLS = {
-  jsHistory: '/',
-  btns: 'buttons',
+  welcome: '/',
+  jsHistory: 'js-history',
+  btns: 'counter',
 }
 
 export { URLS }
