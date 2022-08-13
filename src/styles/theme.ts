@@ -9,12 +9,16 @@ export const defaultTheme: DefaultTheme = {
       bg: '#252827',
     },
     primary: {
-      main: '#004ffc',
+      main: '#3b6ad1',
       contrastText: 'rgb(210, 202, 202)',
     },
     secondary: {
       main: '#6c6d6d',
       contrastText: 'rgb(210, 202, 202)',
+    },
+    bright: {
+      main: '#852069',
+      contrastText: '#cea51c',
     },
   },
 }

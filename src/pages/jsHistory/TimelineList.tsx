@@ -4,53 +4,62 @@ type EventItemProps = {
   date: string
 }
 
-export const TimelineList = () => {
+export const JsHistory = () => {
   return (
-    <List>
-      <EventItem date='1995'>
-        <EventTitle>
-          JavaScript was invented by Brendan Eich during his time at Netscape Communications. It was
-          inspired by Java, Scheme and Self.
-        </EventTitle>
-        <Line></Line>
-      </EventItem>
-      <EventItem date='1997'>
-        <EventTitle>JavaScript became an ECMA standard (ECMA-262)</EventTitle>
-        <Line></Line>
-      </EventItem>
-      <EventItem date='1998'>
-        <EventTitle>ECMAScriLinet 2 was released</EventTitle>
-        <Line></Line>
-      </EventItem>
-      <EventItem date='1999'>
-        <EventTitle>IE 5 was the first browser to support ES2</EventTitle>
-        <Line></Line>
-      </EventItem>
-      <EventItem date='2005'>
-        <EventTitle>A paper released by Jesse James Garrett introduced Ajax</EventTitle>
-        <Line></Line>
-      </EventItem>
-      <EventItem date='2008'>
-        <EventTitle>Creation of V8 - a high-performance JavaScript engine</EventTitle>
-        <Line></Line>
-      </EventItem>
-      <EventItem date='2009'>
-        <EventTitle>
-          The creation of Node.js sparked a significant increase in the usage of JavaScript outside
-          of web browsers
-        </EventTitle>
-        <Line></Line>
-      </EventItem>
-      <EventItem date='2021'>
-        <EventTitle>
-          There are more JavaScript code repositories than any other language, and that number is
-          steadily on the rise.
-        </EventTitle>
-        <Line></Line>
-      </EventItem>
-    </List>
+    <Div_Content>
+      <h1>JavaScript history</h1>
+      <List>
+        <EventItem date='1995'>
+          <EventTitle>
+            JavaScript was invented by Brendan Eich during his time at Netscape Communications. It
+            was inspired by Java, Scheme and Self.
+          </EventTitle>
+          <Line></Line>
+        </EventItem>
+        <EventItem date='1997'>
+          <EventTitle>JavaScript became an ECMA standard (ECMA-262)</EventTitle>
+          <Line></Line>
+        </EventItem>
+        <EventItem date='1998'>
+          <EventTitle>ECMAScriLinet 2 was released</EventTitle>
+          <Line></Line>
+        </EventItem>
+        <EventItem date='1999'>
+          <EventTitle>IE 5 was the first browser to support ES2</EventTitle>
+          <Line></Line>
+        </EventItem>
+        <EventItem date='2005'>
+          <EventTitle>A paper released by Jesse James Garrett introduced Ajax</EventTitle>
+          <Line></Line>
+        </EventItem>
+        <EventItem date='2008'>
+          <EventTitle>Creation of V8 - a high-performance JavaScript engine</EventTitle>
+          <Line></Line>
+        </EventItem>
+        <EventItem date='2009'>
+          <EventTitle>
+            The creation of Node.js sparked a significant increase in the usage of JavaScript
+            outside of web browsers
+          </EventTitle>
+          <Line></Line>
+        </EventItem>
+        <EventItem date='2021'>
+          <EventTitle>
+            There are more JavaScript code repositories than any other language, and that number is
+            steadily on the rise.
+          </EventTitle>
+          <Line></Line>
+        </EventItem>
+      </List>
+    </Div_Content>
   )
 }
+
+const Div_Content = styled.div`
+  min-height: calc(100vh - 100px);
+  color: ${props => props.theme.palette.primary.contrastText};
+  margin: 0 auto;
+`
 
 const List = styled.ul`
   display: flex;
@@ -61,7 +70,6 @@ const List = styled.ul`
   border-top-right-radius: ${props => props.theme.borderRadius};
   background: rgba(255, 255, 255, 0.03);
   color: rgb(245, 228, 228);
-  font-family: 'Chivo', sans-serif;
   margin: ${props => props.theme.spacing} auto;
   letter-spacing: 0.5px;
   position: relative;
