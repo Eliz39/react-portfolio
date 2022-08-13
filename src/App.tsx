@@ -9,7 +9,7 @@ import { Welcome } from './pages/WelcomePage/Welcome'
 import { defaultTheme } from './styles/theme'
 import GlobalStyle from './styles/global'
 
-function App() {
+const App = () => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Routes>

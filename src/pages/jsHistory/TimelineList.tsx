@@ -58,6 +58,7 @@ export const JsHistory = () => {
 const Div_Content = styled.div`
   min-height: calc(100vh - 100px);
   color: ${props => props.theme.palette.primary.contrastText};
+  margin: 0 auto;
 `
 
 const List = styled.ul`

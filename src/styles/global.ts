@@ -8,9 +8,6 @@ export default createGlobalStyle`
         box-sizing:border-box;
         font-family: 'Chivo', sans-serif;
     }
-    #root{
-        margin:0 auto;
-    }
     body{
         background: ${props => props.theme.palette.common.bg};
         color: ${props => props.theme.palette.secondary.main};
