@@ -1,10 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export function Button(props: React.ComponentProps<typeof Button_Styled>) {
-  return <Button_Styled {...props} />
-}
-
 const Button_Styled = styled.button`
   padding: 10px 15px;
   background-color: ${props => props.theme.palette.primary.main};
@@ -17,3 +13,4 @@ const Button_Styled = styled.button`
     color: ${props => props.theme.palette.primary.contrastText};
   }
 `
+export const Button = Button_Styled

@@ -46,8 +46,3 @@ const P_Count = styled.p`
   font-weight: 600;
   margin-bottom: 20px;
 `
-
-// const Button_Styled = styled(Button)`
-//   width: 50px;
-//   height: 30px;
-// `
