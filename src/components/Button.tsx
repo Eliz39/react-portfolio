@@ -1,13 +1,8 @@
+import React from 'react'
 import styled from 'styled-components'
 
-type ButtonProps = {
-  text?: string
-  onClick?: () => void
-  [x: string]: any
-}
-
-export const Button = (props: ButtonProps) => {
-  return <Button_Styled onClick={props.onClick}>{props.text}</Button_Styled>
+export function Button(props: React.ComponentProps<typeof Button_Styled>) {
+  return <Button_Styled {...props} />
 }
 
 const Button_Styled = styled.button`

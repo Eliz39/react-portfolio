@@ -20,16 +20,10 @@ export class Counter extends React.Component<Props, State> {
       <Div_Wrapper>
         <div>
           <P_Count>{this.state.count}</P_Count>
-          <Button_Styled
-            text='+'
-            onClick={() => this.setState(p => ({ count: p.count + 1 }))}
-          ></Button_Styled>
-          <Button_Styled
-            text='-'
-            onClick={() => this.setState(p => ({ count: p.count - 1 }))}
-          ></Button_Styled>
+          <Button onClick={() => this.setState(p => ({ count: p.count + 1 }))}>+</Button>
+          <Button onClick={() => this.setState(p => ({ count: p.count - 1 }))}>-</Button>
         </div>
-        <Button text='reset' onClick={() => this.setState(() => ({ count: 0 }))}></Button>
+        <Button onClick={() => this.setState(() => ({ count: 0 }))}>reset</Button>
       </Div_Wrapper>
     )
   }
@@ -53,7 +47,7 @@ const P_Count = styled.p`
   margin-bottom: 20px;
 `
 
-const Button_Styled = styled(Button)`
-  width: 50px;
-  height: 30px;
-`
+// const Button_Styled = styled(Button)`
+//   width: 50px;
+//   height: 30px;
+// `

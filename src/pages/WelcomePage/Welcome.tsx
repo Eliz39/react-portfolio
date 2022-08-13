@@ -9,13 +9,13 @@ export const Welcome = () => {
       <H1_Title>Hola! Click on any button below to see one of my React mini-app</H1_Title>
       <Div_ButtonContainer>
         <Link to={URLS.jsHistory}>
-          <Button text='JavaScript History'></Button>
+          <Button>JavaScript History</Button>
         </Link>
         <Link to={URLS.counter}>
-          <Button text='Counter App'></Button>
+          <Button>Counter App</Button>
         </Link>
         <Link to={URLS.todo}>
-          <Button text='Todo App'></Button>
+          <Button>Todo App</Button>
         </Link>
       </Div_ButtonContainer>
     </Div_Wrapper>
