@@ -1,14 +1,15 @@
 import { Link, Outlet } from 'react-router-dom'
-import { URLS } from '../../urls'
+import { URLS } from '../urls'
 import styled from 'styled-components'
 
 export const Template = () => {
   return (
     <Div_Wrapper>
       <Header>
-        <StyledLink to={URLS.welcome}>Home</StyledLink>
-        <StyledLink to={URLS.jsHistory}>JavaScript history</StyledLink>
-        <StyledLink to={URLS.btns}>Counter App</StyledLink>
+        <Link_Styled to={URLS.welcome}>Home</Link_Styled>
+        <Link_Styled to={URLS.jsHistory}>JavaScript history</Link_Styled>
+        <Link_Styled to={URLS.counter}>Counter App</Link_Styled>
+        <Link_Styled to={URLS.todo}>Todo App</Link_Styled>
       </Header>
       <Outlet />
       <Footer>ITAbsolvent 2022</Footer>
@@ -17,10 +18,10 @@ export const Template = () => {
 }
 
 const Div_Wrapper = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between:
+  justify-content: space-between;
 `
 
 const Header = styled.header`
@@ -31,8 +32,15 @@ const Header = styled.header`
   justify-content: space-around;
   align-items: center;
 `
-const StyledLink = styled(Link)`
+const Link_Styled = styled(Link)`
   text-decoration: none;
   color: ${props => props.theme.palette.secondary.main};
+  font-size: 18px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: ${props => props.theme.palette.bright.contrastText};
+  }
 `
 const Footer = styled(Header)``

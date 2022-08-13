@@ -6,8 +6,8 @@ type EventItemProps = {
 
 export const JsHistory = () => {
   return (
-    <div className='timeline-content'>
-      <h1 className='timeline-content__title'>JavaScript history</h1>
+    <Div_Content>
+      <h1>JavaScript history</h1>
       <List>
         <EventItem date='1995'>
           <EventTitle>
@@ -51,9 +51,14 @@ export const JsHistory = () => {
           <Line></Line>
         </EventItem>
       </List>
-    </div>
+    </Div_Content>
   )
 }
+
+const Div_Content = styled.div`
+  min-height: calc(100vh - 100px);
+  color: ${props => props.theme.palette.primary.contrastText};
+`
 
 const List = styled.ul`
   display: flex;

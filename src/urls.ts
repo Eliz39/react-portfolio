@@ -1,7 +1,9 @@
 const URLS = {
+  template: '/',
   welcome: '/',
   jsHistory: 'js-history',
-  btns: 'counter',
+  counter: 'counter',
+  todo: 'todo',
 }
 
 export { URLS }

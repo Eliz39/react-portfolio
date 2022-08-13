@@ -15,6 +15,7 @@ declare module 'styled-components' {
       }
       primary: IPalette
       secondary: IPalette
+      bright: IPalette
     }
   }
 }
