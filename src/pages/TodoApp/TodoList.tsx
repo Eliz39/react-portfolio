@@ -4,22 +4,23 @@ import { TodoForm, TodoTask } from './TodoForm'
 import { useLocalStorage } from './useLocalStorage'
 import styled from 'styled-components'
 
-export const TodoList = (props: TodoForm) => {
+export const TodoList = () => {
   const [todos, setTodos] = useLocalStorage('tasks', [] as TodoTask[])
-  const [filter, setFilter] = useLocalStorage<'All' | 'Active' | 'Completed'>('filterdTasks', 'All')
+  const [filter, setFilter] = useLocalStorage<'All' | 'Active' | 'Completed'>(
+    'filteredTasks',
+    'All'
+  )
 
   const addTodo = (todo: TodoTask) => {
-    if (!todo.text || /^\s*$/.test(todo.text)) {
+    const removeRedundantSpacesRegExp = new RegExp(/^\s*$/)
+    if (!todo.text || removeRedundantSpacesRegExp.test(todo.text)) {
       return
     }
-
-    const newTodos = [todo, ...todos]
-    setTodos(newTodos)
+    setTodos([todo, ...todos])
   }
 
   const removeTodo = (id: number) => {
-    const removeArr = [...todos].filter(todo => todo.id !== id)
-    setTodos(removeArr)
+    setTodos(todos.filter(todo => todo.id !== id))
   }
 
   const updateTodo = (todoId: number, newValue: TodoTask) => {
@@ -30,16 +31,17 @@ export const TodoList = (props: TodoForm) => {
   }
 
   const completeTodo = (id: number) => {
-    let updateTodos = todos.map(todo => {
-      if (todo.id === id) {
-        todo.isComplete = !todo.isComplete
-      }
-      return todo
-    })
-    setTodos(updateTodos)
+    setTodos(
+      todos.map(todo => {
+        if (todo.id === id) {
+          todo.isComplete = !todo.isComplete
+        }
+        return todo
+      })
+    )
   }
 
-  const FilterTodo = () => {
+  const filterTodo = () => {
     if (filter === 'Active') {
       return todos.filter(todo => !todo.isComplete)
     } else if (filter === 'Completed') {
@@ -55,11 +57,10 @@ export const TodoList = (props: TodoForm) => {
         <H1_Styled>What is the plan for today?</H1_Styled>
         <TodoForm onSubmit={addTodo} />
         <Todo
-          todos={todos}
+          todos={filterTodo()}
           completeTodo={completeTodo}
           removeTodo={removeTodo}
           updateTodo={updateTodo}
-          filterTodo={FilterTodo}
         />
       </Div_FormWrapper>
       <Div_Buttons>
@@ -79,7 +80,7 @@ const H1_Styled = styled.h1`
   }
 `
 const Div_TodoList = styled.div`
-  height: calc(100vh - 200px);
+  min-height: calc(100vh - 200px);
   margin: 0 auto;
   text-align: center;
   display: flex;

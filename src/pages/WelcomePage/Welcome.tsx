@@ -1,6 +1,6 @@
 import { Button } from '../../components/Button'
 import { Link } from 'react-router-dom'
-import { URLS } from '../../urls'
+import { URLS } from '../../utils/urls'
 import styled from 'styled-components'
 
 export const Welcome = () => {

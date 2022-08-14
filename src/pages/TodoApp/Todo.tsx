@@ -2,7 +2,7 @@ import { IoCheckmarkDoneCircleOutline } from 'react-icons/io5'
 import { RiCloseCircleLine } from 'react-icons/ri'
 import { TiEdit } from 'react-icons/ti'
 import { TodoForm, TodoTask } from './TodoForm'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styled, { css } from 'styled-components'
 
 type Todo = {
@@ -10,44 +10,37 @@ type Todo = {
   completeTodo: (id: number) => void
   removeTodo: (id: number) => void
   updateTodo: (id: number, value: TodoTask) => void
-  filterTodo: () => TodoTask[]
 }
 
 export const Todo = (props: Todo) => {
-  const [edit, setEdit] = useState({
-    id: 0,
-    value: '',
-  })
+  const [editId, setEditId] = useState(0)
+  const [editValue, setEditValue] = useState('')
 
   const submitUpdate = (value: TodoTask) => {
-    props.updateTodo(edit.id, value)
-    setEdit({
-      id: 0,
-      value: '',
-    })
+    props.updateTodo(editId, value)
+    setEditId(0)
+    setEditValue('')
   }
 
-  if (edit.id) {
-    return (
-      <>
-        <TodoForm edit={edit} onSubmit={submitUpdate} />
-      </>
-    )
+  if (editId) {
+    return <TodoForm editId={editId} editValue={editValue} onSubmit={submitUpdate} />
   }
 
   return (
     <>
-      {props.filterTodo().map((todo, index) => (
-        <Div_NewTodo key={index} className={todo.isComplete ? 'complete' : ''}>
+      {props.todos.map(todo => (
+        <Div_NewTodo key={todo.id} isComplete={todo.isComplete ? 'complete' : ''}>
           <div key={todo.id} onClick={() => props.completeTodo(todo.id)}>
             {todo.text}
           </div>
-          <div className='icons'>
+          <div>
             <IoCheckmarkDoneCircleOutline_Styled onClick={() => props.completeTodo(todo.id)} />
             <RiCloseCircleLine_Styled onClick={() => props.removeTodo(todo.id)} />
             <TiEdit_Styled
-              onClick={() => setEdit({ id: todo.id, value: todo.text })}
-              className='edit-icon'
+              onClick={() => {
+                setEditId(todo.id)
+                setEditValue(todo.text)
+              }}
             />
           </div>
         </Div_NewTodo>
@@ -56,7 +49,7 @@ export const Todo = (props: Todo) => {
   )
 }
 
-const Div_NewTodo = styled.div<{ className: string }>`
+const Div_NewTodo = styled.div<{ isComplete: string }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -65,9 +58,9 @@ const Div_NewTodo = styled.div<{ className: string }>`
   padding: 10px;
   color: ${props => props.theme.palette.bright.contrastText};
   border-radius: 7px;
-  text-decoration: ${props => (props.className === 'complete' ? 'line-through' : 'none')};
+  text-decoration: ${props => (props.isComplete === 'complete' ? 'line-through' : 'none')};
 `
-const iconStyles = () => css`
+const iconStyles = css`
   margin-right: 5px;
   width: 20px;
   height: 20px;

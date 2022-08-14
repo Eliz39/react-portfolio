@@ -12,6 +12,8 @@ declare module 'styled-components' {
     palette: {
       common: {
         bg: string
+        hover: string
+        shadow: string
       }
       primary: IPalette
       secondary: IPalette

@@ -7,6 +7,8 @@ export const defaultTheme: DefaultTheme = {
   palette: {
     common: {
       bg: '#252827',
+      hover: '#f6c82d',
+      shadow: '#5d9cec2b',
     },
     primary: {
       main: '#3b6ad1',
