@@ -6,7 +6,7 @@ import styled from 'styled-components'
 export const Welcome = () => {
   return (
     <Div_Wrapper>
-      <H1_Title>Hola! Click on any button below to see one of my React mini-app</H1_Title>
+      <H2_Title>Hola! Click on any button below to see one of my React mini-app</H2_Title>
       <Div_ButtonContainer>
         <Link to={URLS.jsHistory}>
           <Button>JavaScript History</Button>
@@ -30,7 +30,7 @@ const Div_Wrapper = styled.div`
   align-items: center;
   text-align: center;
 `
-const H1_Title = styled.h1`
+const H2_Title = styled.h2`
   color: ${props => props.theme.palette.bright.contrastText};
   margin-bottom: 20px;
 `

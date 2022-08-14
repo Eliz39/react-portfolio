@@ -6,7 +6,7 @@ export default createGlobalStyle`
         padding: 0;
         outline:0;
         box-sizing:border-box;
-        font-family: 'Chivo', sans-serif;
+        font-family: 'DynaPuff', cursive;
     }
     body{
         background: ${props => props.theme.palette.common.bg};

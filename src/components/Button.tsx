@@ -10,7 +10,8 @@ const Button_Styled = styled.button`
   transition: all 0.15s ease-in-out;
 
   &:hover {
-    color: ${props => props.theme.palette.primary.contrastText};
+    color: #f6c82d;
+    box-shadow: 0 0 15px 4px #5d9cec2b;
   }
 `
 export const Button = Button_Styled

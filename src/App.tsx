@@ -3,7 +3,7 @@ import { JsHistory } from './pages/jsHistory/TimelineList'
 import { Route, Routes } from 'react-router-dom'
 import { Template } from './components/Template'
 import { ThemeProvider } from 'styled-components'
-import { Todo } from './pages/TodoApp/Todo'
+import { TodoList } from './pages/TodoApp/TodoList'
 import { URLS } from './urls'
 import { Welcome } from './pages/WelcomePage/Welcome'
 import { defaultTheme } from './styles/theme'
@@ -17,7 +17,7 @@ const App = () => {
           <Route path={URLS.welcome} element={<Welcome />} />
           <Route path={URLS.jsHistory} element={<JsHistory />} />
           <Route path={URLS.counter} element={<Counter />} />
-          <Route path={URLS.todo} element={<Todo />} />
+          <Route path={URLS.todo} element={<TodoList />} />
         </Route>
       </Routes>
       <GlobalStyle />

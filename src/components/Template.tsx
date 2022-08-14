@@ -43,4 +43,4 @@ const Link_Styled = styled(Link)`
     color: ${props => props.theme.palette.bright.contrastText};
   }
 `
-const Footer = styled(Header)``
+const Footer = Header
