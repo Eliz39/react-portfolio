@@ -32,12 +32,7 @@ export const TodoList = () => {
 
   const completeTodo = (id: number) => {
     setTodos(
-      todos.map(todo => {
-        if (todo.id === id) {
-          todo.isComplete = !todo.isComplete
-        }
-        return todo
-      })
+      todos.map(todo => (todo.id === id ? { ...todo, isComplete: !todo.isComplete } : { ...todo }))
     )
   }
 
