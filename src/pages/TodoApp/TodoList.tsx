@@ -24,7 +24,7 @@ export const TodoList = () => {
   }
 
   const updateTodo = (todoId: number, newValue: TodoTask) => {
-    if (!newValue.text || /^\s*$/.test(newValue.text)) {
+    if (!newValue.text || removeRedundantSpacesRegExp.test(newValue.text)) {
       return
     }
     setTodos(todos.map(item => (item.id === todoId ? newValue : item)))
