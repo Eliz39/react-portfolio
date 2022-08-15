@@ -3,6 +3,7 @@ import { Todo } from './Todo'
 import { TodoForm, TodoTask } from './TodoForm'
 import { useLocalStorage } from './useLocalStorage'
 import styled from 'styled-components'
+const removeRedundantSpacesRegExp = new RegExp(/^\s*$/)
 
 export const TodoList = () => {
   const [todos, setTodos] = useLocalStorage('tasks', [] as TodoTask[])
@@ -12,7 +13,6 @@ export const TodoList = () => {
   )
 
   const addTodo = (todo: TodoTask) => {
-    const removeRedundantSpacesRegExp = new RegExp(/^\s*$/)
     if (!todo.text || removeRedundantSpacesRegExp.test(todo.text)) {
       return
     }
@@ -27,7 +27,7 @@ export const TodoList = () => {
     if (!newValue.text || /^\s*$/.test(newValue.text)) {
       return
     }
-    setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)))
+    setTodos(todos.map(item => (item.id === todoId ? newValue : item)))
   }
 
   const completeTodo = (id: number) => {
@@ -75,7 +75,7 @@ export const TodoList = () => {
 const H1_Styled = styled.h1`
   text-align: center;
   margin-bottom: 20px;
-  @media (max-width: 500px) {
+  @media (max-width: ${props => props.theme.palette.breakpoints.xs}) {
     font-size: 25px;
   }
 `

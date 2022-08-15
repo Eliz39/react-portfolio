@@ -22,5 +22,10 @@ export const defaultTheme: DefaultTheme = {
       main: '#852069',
       contrastText: '#cea51c',
     },
+    breakpoints: {
+      xs: '500px',
+      sm: '600px',
+      md: '960px',
+    },
   },
 }

@@ -75,7 +75,7 @@ const Input_Styled = styled.input<{ className: string }>`
     font-size: 14px;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: ${props => props.theme.palette.breakpoints.xs}) {
     max-width: 230px;
   }
 `

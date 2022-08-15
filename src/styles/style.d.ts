@@ -3,6 +3,12 @@ interface IPalette {
   main: string
   contrastText: string
 }
+
+interface IBreakpoints {
+  xs: string
+  sm: string
+  md: string
+}
 declare module 'styled-components' {
   export interface DefaultTheme {
     borderRadius: string
@@ -18,6 +24,7 @@ declare module 'styled-components' {
       primary: IPalette
       secondary: IPalette
       bright: IPalette
+      breakpoints: IBreakpoints
     }
   }
 }
