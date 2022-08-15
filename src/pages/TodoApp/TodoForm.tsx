@@ -53,7 +53,9 @@ const Input_Styled = styled.input<{ className: string }>`
   display: block;
   background: ${props => props.theme.palette.common.bg};
   color: ${props =>
-    props.className === 'update' ? '#fff' : `${props.theme.palette.bright.contrastText}`};
+    props.className === 'update'
+      ? props.theme.palette.standard.contrastText
+      : props.theme.palette.bright.contrastText};
   font-size: 14px;
   line-height: 30px;
   overflow: hidden;
@@ -63,17 +65,10 @@ const Input_Styled = styled.input<{ className: string }>`
   border: 1px solid
     ${props =>
       props.className === 'update'
-        ? `${props.theme.palette.primary.main}`
-        : `${props.theme.palette.bright.contrastText}`};
+        ? props.theme.palette.primary.main
+        : props.theme.palette.bright.contrastText};
   padding: 10px;
   box-shadow: 0 0 15px 4px rgb(255 184 0 / 6%);
-
-  &::placeholder {
-    pointer-events: none;
-    color: ${props => props.theme.palette.bright.contrastText};
-    transition-duration: 0.3s;
-    font-size: 14px;
-  }
 
   @media (max-width: ${props => props.theme.palette.breakpoints.xs}) {
     max-width: 230px;
@@ -85,8 +80,4 @@ const Form_Styled = styled.form`
 `
 const Button_Styled = styled(Button)`
   font-size: 14px;
-`
-const Input_Styled_Updated = styled(Input_Styled)`
-  color: #fff;
-  border-color: ${props => props.theme.palette.primary.main};
 `
