@@ -4,11 +4,13 @@ export const defaultTheme: DefaultTheme = {
   spacing: '50px',
   date: '120px',
   dot: '11px',
+  codeFont: 'Courier Prime',
   palette: {
     common: {
       bg: '#252827',
       hover: '#f6c82d',
       shadow: '#5d9cec2b',
+      code: '#2ad400',
     },
     primary: {
       main: '#3b6ad1',

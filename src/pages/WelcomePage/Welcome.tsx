@@ -17,6 +17,9 @@ export const Welcome = () => {
         <Link to={URLS.todo}>
           <Button>Todo App</Button>
         </Link>
+        <Link to={URLS.hackerTyper}>
+          <Button>Hacker Typer</Button>
+        </Link>
       </Div_ButtonContainer>
     </Div_Wrapper>
   )

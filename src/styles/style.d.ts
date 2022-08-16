@@ -15,11 +15,13 @@ declare module 'styled-components' {
     spacing: string
     date: string
     dot: string
+    codeFont: string
     palette: {
       common: {
         bg: string
         hover: string
         shadow: string
+        code: string
       }
       primary: Palette
       secondary: Palette
