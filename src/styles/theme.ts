@@ -7,6 +7,8 @@ export const defaultTheme: DefaultTheme = {
   palette: {
     common: {
       bg: '#252827',
+      hover: '#f6c82d',
+      shadow: '#5d9cec2b',
     },
     primary: {
       main: '#3b6ad1',
@@ -19,6 +21,15 @@ export const defaultTheme: DefaultTheme = {
     bright: {
       main: '#852069',
       contrastText: '#cea51c',
+    },
+    standard: {
+      main: '#000000',
+      contrastText: '#ffffff',
+    },
+    breakpoints: {
+      xs: '500px',
+      sm: '600px',
+      md: '960px',
     },
   },
 }

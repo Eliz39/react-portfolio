@@ -1,7 +1,13 @@
 import 'styled-components'
-interface IPalette {
+type Palette = {
   main: string
   contrastText: string
+}
+
+type IBreakpoints = {
+  xs: string
+  sm: string
+  md: string
 }
 declare module 'styled-components' {
   export interface DefaultTheme {
@@ -12,10 +18,14 @@ declare module 'styled-components' {
     palette: {
       common: {
         bg: string
+        hover: string
+        shadow: string
       }
-      primary: IPalette
-      secondary: IPalette
-      bright: IPalette
+      primary: Palette
+      secondary: Palette
+      bright: Palette
+      breakpoints: Breakpoints
+      standard: Palette
     }
   }
 }
