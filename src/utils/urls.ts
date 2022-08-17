@@ -4,6 +4,7 @@ const URLS = {
   jsHistory: 'js-history',
   counter: 'counter',
   todo: 'todo',
+  hackerTyper: 'hackerTyper',
 }
 
 export { URLS }

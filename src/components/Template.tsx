@@ -10,6 +10,7 @@ export const Template = () => {
         <Link_Styled to={URLS.jsHistory}>JavaScript history</Link_Styled>
         <Link_Styled to={URLS.counter}>Counter App</Link_Styled>
         <Link_Styled to={URLS.todo}>Todo App</Link_Styled>
+        <Link_Styled to={URLS.hackerTyper}>Hacker Typer</Link_Styled>
       </Header>
       <Outlet />
       <Footer>ITAbsolvent 2022</Footer>

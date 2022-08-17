@@ -1,4 +1,5 @@
 import { Counter } from './pages/counterApp/Counter'
+import { HackerTyper } from './pages/HackerTyper/HackerTyper'
 import { JsHistory } from './pages/jsHistory/TimelineList'
 import { Route, Routes } from 'react-router-dom'
 import { Template } from './components/Template'
@@ -18,6 +19,7 @@ const App = () => {
           <Route path={URLS.jsHistory} element={<JsHistory />} />
           <Route path={URLS.counter} element={<Counter />} />
           <Route path={URLS.todo} element={<TodoList />} />
+          <Route path={URLS.hackerTyper} element={<HackerTyper />} />
         </Route>
       </Routes>
       <GlobalStyle />
