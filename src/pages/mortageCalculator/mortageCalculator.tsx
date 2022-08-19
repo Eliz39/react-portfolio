@@ -1,3 +1,4 @@
+import { mortageCalculation } from '../../utils/mortageCalculation'
 import { useState } from 'react'
 import styled from 'styled-components'
 
@@ -5,11 +6,6 @@ export const MortageCalculator = () => {
   const [amount, setAmount] = useState(1_000_000)
   const [period, setPeriod] = useState(5)
   const [percentage, setPercentage] = useState(5)
-
-  let payment = Math.round(
-    (((amount * percentage) / 100 / 12) * (1 + percentage / 100 / 12) ** (12 * period)) /
-      ((1 + percentage / 100 / 12) ** (12 * period) - 1)
-  )
 
   return (
     <Div_Wrapper>
@@ -49,8 +45,9 @@ export const MortageCalculator = () => {
         />
       </Form_Styled>
       <Div_Text>
-        Your payment <Span_BrightText>{payment || 0}</Span_BrightText> kč/month for{' '}
-        <Span_BrightText>{period}</Span_BrightText> years
+        Your payment is{' '}
+        <Span_BrightText>{mortageCalculation(period, percentage, amount) || 0}</Span_BrightText>{' '}
+        Kč/month for <Span_BrightText>{period}</Span_BrightText> years
       </Div_Text>
     </Div_Wrapper>
   )
