@@ -4,7 +4,8 @@ const URLS = {
   jsHistory: 'js-history',
   counter: 'counter',
   todo: 'todo',
-  hackerTyper: 'hackerTyper',
+  hackerTyper: 'hacker-typer',
+  mortageCalculator: 'mortage-calculator',
 }
 
 export { URLS }

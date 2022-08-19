@@ -20,6 +20,9 @@ export const Welcome = () => {
         <Link to={URLS.hackerTyper}>
           <Button>Hacker Typer</Button>
         </Link>
+        <Link to={URLS.mortageCalculator}>
+          <Button>Mortage calculator</Button>
+        </Link>
       </Div_ButtonContainer>
     </Div_Wrapper>
   )
