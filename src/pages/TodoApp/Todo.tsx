@@ -2,7 +2,8 @@ import { IoCheckmarkDoneCircleOutline } from 'react-icons/io5'
 import { RiCloseCircleLine } from 'react-icons/ri'
 import { TiEdit } from 'react-icons/ti'
 import { TodoForm, TodoTask } from './TodoForm'
-import { useState } from 'react'
+import { TodosContext } from './TodoList'
+import { useContext, useState } from 'react'
 import styled, { css } from 'styled-components'
 
 type Todo = {
@@ -13,6 +14,7 @@ type Todo = {
 }
 
 export const Todo = (props: Todo) => {
+  const logic = useContext(TodosContext)
   const [editId, setEditId] = useState(0)
   const [editValue, setEditValue] = useState('')
 
@@ -30,9 +32,7 @@ export const Todo = (props: Todo) => {
     <>
       {props.todos.map(todo => (
         <Div_NewTodo key={todo.id} isComplete={todo.isComplete ? 'complete' : ''}>
-          <div key={todo.id} onClick={() => props.completeTodo(todo.id)}>
-            {todo.text}
-          </div>
+          {todo.text}
           <div>
             <IoCheckmarkDoneCircleOutline_Styled onClick={() => props.completeTodo(todo.id)} />
             <RiCloseCircleLine_Styled onClick={() => props.removeTodo(todo.id)} />

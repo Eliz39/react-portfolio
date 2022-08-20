@@ -5,7 +5,7 @@ import { MortageCalculator } from './pages/mortageCalculator/mortageCalculator'
 import { Route, Routes } from 'react-router-dom'
 import { Template } from './components/Template'
 import { ThemeProvider } from 'styled-components'
-import { TodoList } from './pages/TodoApp/TodoList'
+import { TodoApp } from './pages/TodoApp/TodoList'
 import { URLS } from './utils/urls'
 import { Welcome } from './pages/WelcomePage/Welcome'
 import { defaultTheme } from './styles/theme'
@@ -19,7 +19,7 @@ const App = () => {
           <Route path={URLS.welcome} element={<Welcome />} />
           <Route path={URLS.jsHistory} element={<JsHistory />} />
           <Route path={URLS.counter} element={<Counter />} />
-          <Route path={URLS.todo} element={<TodoList />} />
+          <Route path={URLS.todo} element={<TodoApp />} />
           <Route path={URLS.hackerTyper} element={<HackerTyper />} />
           <Route path={URLS.mortageCalculator} element={<MortageCalculator />} />
         </Route>
