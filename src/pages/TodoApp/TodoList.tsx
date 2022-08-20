@@ -8,12 +8,11 @@ import styled from 'styled-components'
 
 const removeRedundantSpacesRegExp = new RegExp(/^\s*$/)
 
-export const useLogicState = () => {
+const useLogicState = () => {
   const [todos, setTodos] = useLocalStorage('tasks', [] as TodoTask[])
-  const [filter, setFilter] = useLocalStorage<'All' | 'Active' | 'Completed'>(
-    'filteredTasks',
-    'All'
-  )
+  const [filter, setFilter] = useState<'All' | 'Active' | 'Completed'>('All')
+  const [editId, setEditId] = useState(0)
+  const [editValue, setEditValue] = useState('')
 
   const addTodo = (todo: TodoTask) => {
     if (!todo.text || removeRedundantSpacesRegExp.test(todo.text)) {
@@ -48,6 +47,13 @@ export const useLogicState = () => {
       return todos
     }
   }
+
+  const submitUpdate = (value: TodoTask) => {
+    updateTodo(editId, value)
+    setEditId(0)
+    setEditValue('')
+  }
+
   return {
     todos,
     setTodos,
@@ -58,6 +64,11 @@ export const useLogicState = () => {
     updateTodo,
     completeTodo,
     filterTodo,
+    submitUpdate,
+    editId,
+    setEditId,
+    editValue,
+    setEditValue,
   }
 }
 
@@ -74,27 +85,19 @@ export const TodoApp = () => {
 
 const TodoList = () => {
   const logic = useContext(TodosContext)
-
   return (
-    <TodoContextProvider>
-      <Div_TodoList>
-        <Div_FormWrapper>
-          <H1_Styled>What is the plan for today?</H1_Styled>
-          <TodoForm onSubmit={logic.addTodo} />
-          <Todo
-            todos={logic.filterTodo()}
-            completeTodo={logic.completeTodo}
-            removeTodo={logic.removeTodo}
-            updateTodo={logic.updateTodo}
-          />
-        </Div_FormWrapper>
-        <Div_Buttons>
-          <Button onClick={() => logic.setFilter('All')}>All</Button>
-          <Button onClick={() => logic.setFilter('Active')}>Active</Button>
-          <Button onClick={() => logic.setFilter('Completed')}>Completed</Button>
-        </Div_Buttons>
-      </Div_TodoList>
-    </TodoContextProvider>
+    <Div_TodoList>
+      <Div_FormWrapper>
+        <H1_Styled>What is the plan for today?</H1_Styled>
+        <TodoForm onSubmit={logic.addTodo} />
+        <Todo />
+      </Div_FormWrapper>
+      <Div_Buttons>
+        <Button onClick={() => logic.setFilter('All')}>All</Button>
+        <Button onClick={() => logic.setFilter('Active')}>Active</Button>
+        <Button onClick={() => logic.setFilter('Completed')}>Completed</Button>
+      </Div_Buttons>
+    </Div_TodoList>
   )
 }
 

@@ -1,7 +1,7 @@
 import { Button } from '../../components/Button'
-import { genericHookContextBuilder } from '../../utils/genericHookContextBuilder'
+import { TodosContext } from './TodoList'
 import { idGenerator } from '../../utils/idGenerator'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 
 export type TodoTask = {
@@ -18,10 +18,19 @@ export type TodoForm = {
 }
 
 export const TodoForm = (props: TodoForm) => {
+  const logic = useContext(TodosContext)
   const [input, setInput] = useState(props.editValue ? props.editValue : '')
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
+    logic.setTodos([
+      {
+        id: idGenerator(),
+        text: input,
+        isComplete: false,
+      },
+      ...logic.todos,
+    ])
     props.onSubmit({
       id: idGenerator(),
       text: input,
