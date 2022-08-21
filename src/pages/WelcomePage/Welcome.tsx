@@ -23,6 +23,9 @@ export const Welcome = () => {
         <Link to={URLS.mortageCalculator}>
           <Button>Mortage calculator</Button>
         </Link>
+        <Link to={URLS.MemoryGame}>
+          <Button>Memory Game</Button>
+        </Link>
       </Div_ButtonContainer>
     </Div_Wrapper>
   )

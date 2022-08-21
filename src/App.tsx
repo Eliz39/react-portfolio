@@ -1,6 +1,7 @@
 import { Counter } from './pages/counterApp/Counter'
 import { HackerTyper } from './pages/HackerTyper/HackerTyper'
 import { JsHistory } from './pages/jsHistory/TimelineList'
+import { MemoryGame } from './pages/memoryGame/MemoryGame'
 import { MortageCalculator } from './pages/mortageCalculator/mortageCalculator'
 import { Route, Routes } from 'react-router-dom'
 import { Template } from './components/Template'
@@ -22,6 +23,7 @@ const App = () => {
           <Route path={URLS.todo} element={<TodoApp />} />
           <Route path={URLS.hackerTyper} element={<HackerTyper />} />
           <Route path={URLS.mortageCalculator} element={<MortageCalculator />} />
+          <Route path={URLS.MemoryGame} element={<MemoryGame />} />
         </Route>
       </Routes>
       <GlobalStyle />
