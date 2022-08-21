@@ -1,6 +1,6 @@
 import { Button } from '../../components/Button'
 import { SingleCard } from './SingleCard'
-import { idGenerator } from '../../utils/idGenerator'
+import { getShuffledCards } from '../../utils/shuffleCards'
 import Card01 from './assets/c01.jpg'
 import Card02 from './assets/c02.jpg'
 import Card03 from './assets/c03.jpg'
@@ -21,46 +21,42 @@ export type Card = {
   matched: boolean
 }
 
+const delay = (ms: number) => new Promise(res => setTimeout(res, ms))
+
 export const MemoryGame = () => {
-  const [cards, setCards] = useState<Card[]>([])
+  const [cards, setCards] = useState([] as Card[] | [])
   const [turns, setTurns] = useState(0)
-  const [choiceOne, setChoiceOne] = useState<Card | null>(null)
-  const [choiceTwo, setChoiceTwo] = useState<Card | null>(null)
+  const [choiceOne, setChoiceOne] = useState(null as Card | null)
+  const [choiceTwo, setChoiceTwo] = useState(null as Card | null)
   const [disabled, setDisabled] = useState(false)
 
   const shuffleCards = () => {
-    const shuffledCards = [...cardImages, ...cardImages]
-      .sort(() => Math.random() - 0.5)
-      .map((img: string) => ({ img: img, id: idGenerator(), matched: false }))
+    const shuffledCards = getShuffledCards([...cardImages, ...cardImages])
     setChoiceOne(null)
     setChoiceTwo(null)
     setCards(shuffledCards)
     setTurns(0)
   }
 
-  const handleChoice = (card: Card) => {
-    choiceOne === null ? setChoiceOne(card) : setChoiceTwo(card)
-  }
-
-  useEffect(() => {
-    if (choiceOne && choiceTwo) {
-      setDisabled(true)
-      if (choiceOne.img === choiceTwo.img && choiceOne.id !== choiceTwo.id) {
-        setCards(prevCards => {
-          return prevCards.map(card => {
-            if (card.img === choiceOne.img) {
-              return { img: card.img, id: card.id, matched: true }
-            } else {
-              return card
-            }
-          })
-        })
-        resetTurn()
-      } else {
-        setTimeout(() => resetTurn(), 1000)
+  const handleChoice = async (card: Card) => {
+    if (choiceOne === null) {
+      setChoiceOne(card)
+    } else if (choiceTwo === null) {
+      setChoiceTwo(card)
+      if (choiceOne && card.id !== choiceOne.id) {
+        setDisabled(true)
+        if (choiceOne.img === card.img && choiceOne.id !== card.id) {
+          setCards(prevCards =>
+            prevCards.map(card => (card.img === choiceOne.img ? { ...card, matched: true } : card))
+          )
+          resetTurn()
+        } else {
+          await delay(1_000)
+          resetTurn()
+        }
       }
     }
-  }, [choiceOne, choiceTwo])
+  }
 
   const resetTurn = () => {
     setChoiceOne(null)
