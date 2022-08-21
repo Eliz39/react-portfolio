@@ -2,44 +2,33 @@ import { IoCheckmarkDoneCircleOutline } from 'react-icons/io5'
 import { RiCloseCircleLine } from 'react-icons/ri'
 import { TiEdit } from 'react-icons/ti'
 import { TodoForm, TodoTask } from './TodoForm'
-import { useState } from 'react'
+import { TodosContext } from './TodoList'
+import { useContext, useState } from 'react'
 import styled, { css } from 'styled-components'
 
-type Todo = {
-  todos: TodoTask[]
-  completeTodo: (id: number) => void
-  removeTodo: (id: number) => void
-  updateTodo: (id: number, value: TodoTask) => void
-}
+export const Todo = () => {
+  const logic = useContext(TodosContext)
 
-export const Todo = (props: Todo) => {
-  const [editId, setEditId] = useState(0)
-  const [editValue, setEditValue] = useState('')
-
-  const submitUpdate = (value: TodoTask) => {
-    props.updateTodo(editId, value)
-    setEditId(0)
-    setEditValue('')
-  }
-
-  if (editId) {
-    return <TodoForm editId={editId} editValue={editValue} onSubmit={submitUpdate} />
+  if (logic.editId) {
+    return (
+      <TodoForm editId={logic.editId} editValue={logic.editValue} onSubmit={logic.submitUpdate} />
+    )
   }
 
   return (
     <>
-      {props.todos.map(todo => (
+      {logic.filterTodo().map(todo => (
         <Div_NewTodo key={todo.id} isComplete={todo.isComplete ? 'complete' : ''}>
-          <div key={todo.id} onClick={() => props.completeTodo(todo.id)}>
+          <div key={todo.id} onClick={() => logic.completeTodo(todo.id)}>
             {todo.text}
           </div>
           <div>
-            <IoCheckmarkDoneCircleOutline_Styled onClick={() => props.completeTodo(todo.id)} />
-            <RiCloseCircleLine_Styled onClick={() => props.removeTodo(todo.id)} />
+            <IoCheckmarkDoneCircleOutline_Styled onClick={() => logic.completeTodo(todo.id)} />
+            <RiCloseCircleLine_Styled onClick={() => logic.removeTodo(todo.id)} />
             <TiEdit_Styled
               onClick={() => {
-                setEditId(todo.id)
-                setEditValue(todo.text)
+                logic.setEditId(todo.id)
+                logic.setEditValue(todo.text)
               }}
             />
           </div>
