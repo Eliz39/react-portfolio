@@ -14,14 +14,13 @@ type FlipCard = {
 
 export const SingleCard = (props: SingleCard) => {
   const handleClick = () => {
-    if (props.disabled !== true) props.handleChoice(props.card)
+    if (props.disabled) return
+    props.handleChoice(props.card)
   }
   return (
     <div>
-      <div>
-        <Img_Front src={props.card.img} flipped={props.flipped} alt='card front' />
-        <Img_Cover src={Cover} onClick={handleClick} flipped={props.flipped} alt='card back' />
-      </div>
+      <Img_Front src={props.card.img} flipped={props.flipped} alt='card front' />
+      <Img_Cover src={Cover} onClick={handleClick} flipped={props.flipped} alt='card back' />
     </div>
   )
 }

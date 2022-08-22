@@ -1,6 +1,9 @@
 import { Button } from '../../components/Button'
 import { SingleCard } from './SingleCard'
-import { getShuffledCards } from '../../utils/shuffleCards'
+import { getShuffledArray } from '../../utils/shuffleArray'
+import { idGenerator } from '../../utils/idGenerator'
+import { useComponentDidMount } from '../../utils/useComponentDidMount'
+import { useState } from 'react'
 import Card01 from './assets/c01.jpg'
 import Card02 from './assets/c02.jpg'
 import Card03 from './assets/c03.jpg'
@@ -9,8 +12,6 @@ import Card05 from './assets/c05.jpg'
 import Card06 from './assets/c06.jpg'
 import Card07 from './assets/c07.jpg'
 import Card08 from './assets/c08.jpg'
-
-import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const cardImages = [Card01, Card02, Card03, Card04, Card05, Card06, Card07, Card08]
@@ -31,7 +32,11 @@ export const MemoryGame = () => {
   const [disabled, setDisabled] = useState(false)
 
   const shuffleCards = () => {
-    const shuffledCards = getShuffledCards([...cardImages, ...cardImages])
+    const shuffledCards = getShuffledArray([...cardImages, ...cardImages]).map(img => ({
+      img: img,
+      id: idGenerator(),
+      matched: false,
+    }))
     setChoiceOne(null)
     setChoiceTwo(null)
     setCards(shuffledCards)
@@ -65,9 +70,7 @@ export const MemoryGame = () => {
     setDisabled(false)
   }
 
-  useEffect(() => {
-    shuffleCards()
-  }, [])
+  useComponentDidMount(() => shuffleCards())
 
   return (
     <Div_Wrapper>
