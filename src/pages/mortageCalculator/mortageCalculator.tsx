@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet'
 import { mortageCalculation } from '../../utils/mortageCalculation'
 import { useState } from 'react'
 import styled from 'styled-components'
@@ -9,6 +10,9 @@ export const MortageCalculator = () => {
 
   return (
     <Div_Wrapper>
+      <Helmet>
+        <title>Yelyzaveta Nikitina - Mortage calculator</title>
+      </Helmet>
       <Form_Styled>
         <Input_Styled
           type='number'
@@ -55,6 +59,7 @@ export const MortageCalculator = () => {
 
 const Div_Wrapper = styled.div`
   text-align: center;
+  padding: 0 20px;
 `
 const Input_Styled = styled.input`
   box-sizing: border-box;

@@ -1,4 +1,5 @@
 import { Button } from '../../components/Button'
+import { Helmet } from 'react-helmet'
 import { Todo } from './Todo'
 import { TodoForm, TodoTask } from './TodoForm'
 import { genericHookContextBuilder } from '../../utils/genericHookContextBuilder'
@@ -78,6 +79,9 @@ export const { ContextProvider: TodoContextProvider, Context: TodosContext } =
 export const TodoApp = () => {
   return (
     <TodoContextProvider>
+      <Helmet>
+        <title>Yelyzaveta Nikitina - ToDo list</title>
+      </Helmet>
       <TodoList />
     </TodoContextProvider>
   )
@@ -105,7 +109,7 @@ const H1_Styled = styled.h1`
   text-align: center;
   margin-bottom: 20px;
   @media (max-width: ${props => props.theme.palette.breakpoints.xs}) {
-    font-size: 25px;
+    font-size: 20px;
   }
 `
 const Div_TodoList = styled.div`

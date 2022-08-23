@@ -47,7 +47,12 @@ const Div_NewTodo = styled.div<{ isComplete: string }>`
   padding: 10px;
   color: ${props => props.theme.palette.bright.contrastText};
   border-radius: 7px;
+  overflow: overlay;
   text-decoration: ${props => (props.isComplete === 'complete' ? 'line-through' : 'none')};
+
+  @media (max-width: ${props => props.theme.palette.breakpoints.xs}) {
+    max-width: 330px;
+  }
 `
 const iconStyles = css`
   margin-right: 5px;

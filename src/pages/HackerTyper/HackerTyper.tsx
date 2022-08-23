@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet'
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 
@@ -30,6 +31,9 @@ export const HackerTyper = () => {
       tabIndex={0}
       ref={divWrapperRef}
     >
+      <Helmet>
+        <title>Yelyzaveta Nikitina - Hacker Typer clone</title>
+      </Helmet>
       <Div_Content>{codeSource.substring(0, currentIndex) || START_MESSAGE}</Div_Content>
       <p ref={bottomParagraphRef}></p>
     </Div_Wrapper>

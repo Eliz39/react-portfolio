@@ -1,4 +1,5 @@
 import { Button } from '../../components/Button'
+import { Helmet } from 'react-helmet'
 import { SingleCard } from './SingleCard'
 import { getShuffledArray } from '../../utils/shuffleArray'
 import { idGenerator } from '../../utils/idGenerator'
@@ -74,6 +75,9 @@ export const MemoryGame = () => {
 
   return (
     <Div_Wrapper>
+      <Helmet>
+        <title>Yelyzaveta Nikitina - Pexeso memory game</title>
+      </Helmet>
       <div>
         <Button onClick={shuffleCards}>New game</Button>
         <P_Turns>Turns: {turns}</P_Turns>
@@ -104,6 +108,12 @@ const Div_Wrapper = styled.div`
   align-items: center;
   gap: 50px;
   justify-content: center;
+  padding: 0 20px;
+
+  @media (max-width: ${props => props.theme.palette.breakpoints.md}) {
+    grid-template-columns: none;
+    gap: 0;
+  }
 `
 const Div_Cards = styled.div`
   margin-top: 50px;
@@ -111,6 +121,10 @@ const Div_Cards = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;
+
+  @media (max-width: ${props => props.theme.palette.breakpoints.xs}) {
+    max-width: 330px;
+  }
 `
 const SingleCard_Styled = styled(SingleCard)`
   position: relative;

@@ -16,8 +16,8 @@ const App = () => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Routes>
+        <Route path={URLS.welcome} element={<Welcome />} />
         <Route path={URLS.template} element={<Template />}>
-          <Route path={URLS.welcome} element={<Welcome />} />
           <Route path={URLS.jsHistory} element={<JsHistory />} />
           <Route path={URLS.counter} element={<Counter />} />
           <Route path={URLS.todo} element={<TodoApp />} />
