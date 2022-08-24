@@ -1,4 +1,5 @@
 import { Button } from '../../components/Button'
+import { Helmet } from 'react-helmet'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -18,6 +19,9 @@ export class Counter extends React.Component<Props, State> {
   render() {
     return (
       <Div_Wrapper>
+        <Helmet>
+          <title>Yelyzaveta Nikitina - Simple counter app</title>
+        </Helmet>
         <div>
           <P_Count>{this.state.count}</P_Count>
           <Button onClick={() => this.setState(p => ({ count: p.count + 1 }))}>+</Button>

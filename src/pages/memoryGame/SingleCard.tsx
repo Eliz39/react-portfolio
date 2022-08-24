@@ -32,6 +32,11 @@ const imgStyles = css`
   border-radius: 6px;
   cursor: pointer;
   transition: all ease-in-out 0.2s;
+
+  @media (max-width: ${props => props.theme.palette.breakpoints.sm}) {
+    width: 70px;
+    height: 70px;
+  }
 `
 const Img_Front = styled.img<FlipCard>`
   ${imgStyles}

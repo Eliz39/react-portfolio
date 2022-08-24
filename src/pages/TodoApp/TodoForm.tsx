@@ -81,7 +81,7 @@ const Input_Styled = styled.input<{ className: string }>`
   box-shadow: 0 0 15px 4px rgb(255 184 0 / 6%);
 
   @media (max-width: ${props => props.theme.palette.breakpoints.xs}) {
-    max-width: 230px;
+    max-width: 300px;
   }
 `
 const Form_Styled = styled.form`

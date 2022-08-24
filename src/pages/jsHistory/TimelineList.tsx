@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 
 type EventItemProps = {
@@ -7,6 +8,9 @@ type EventItemProps = {
 export const JsHistory = () => {
   return (
     <Div_Content>
+      <Helmet>
+        <title>Yelyzaveta Nikitina - JS history</title>
+      </Helmet>
       <h1>JavaScript history</h1>
       <List>
         <EventItem date='1995'>
